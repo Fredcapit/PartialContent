@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace p5
+namespace p5.interfaces
 {
     public interface PartialContentProducerInerface
     {
 
-        Task isAvailable();
+        Task<bool> isAvailable();
         Task IsRangeHeaderExist();
         Task CanRangeBeFulfilled();
         Task ProduceConent();

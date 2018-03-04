@@ -30,7 +30,7 @@
   },
   "libraries": {
     "Microsoft.NETCore.Platforms/1.1.0": {
-      "sha512": "kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
+      "sha512": "6/XEJUmbZoLOphKdASHDR2EUi14Yy0y/2lXz++FIdTCQW7fRkLYlJmtHGa0eLPl6mpBbTZy6ZDqtNYfsRMFtmA==",
       "type": "package",
       "path": "microsoft.netcore.platforms/1.1.0",
       "files": [
@@ -151,6 +151,7 @@
         "build/netstandard2.0/ref/System.Transactions.dll",
         "build/netstandard2.0/ref/System.ValueTuple.dll",
         "build/netstandard2.0/ref/System.Web.dll",
+        "build/netstandard2.0/ref/System.Web.Http.dll",
         "build/netstandard2.0/ref/System.Windows.dll",
         "build/netstandard2.0/ref/System.Xml.Linq.dll",
         "build/netstandard2.0/ref/System.Xml.ReaderWriter.dll",
@@ -177,28 +178,34 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ShibanovFV\\.nuget\\packages\\": {},
+    "C:\\Users\\Фёдор\\.nuget\\packages\\": {},
+    "C:\\Program Files\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\code\\p5\\p5\\p5.csproj",
+      "projectUniqueName": "D:\\Coding\\c#\\w1\\p5\\p5.csproj",
       "projectName": "p5",
-      "projectPath": "D:\\code\\p5\\p5\\p5.csproj",
-      "packagesPath": "C:\\Users\\ShibanovFV\\.nuget\\packages\\",
-      "outputPath": "D:\\code\\p5\\p5\\obj\\",
+      "projectPath": "D:\\Coding\\c#\\w1\\p5\\p5.csproj",
+      "packagesPath": "C:\\Users\\Фёдор\\.nuget\\packages\\",
+      "outputPath": "D:\\Coding\\c#\\w1\\p5\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+        "C:\\Program Files\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\ShibanovFV\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Фёдор\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"
       ],
       "sources": {
+        "C:\\Program Files\\Microsoft SDKs\\NuGetPackages\\": {},
+        "D:\\Coding\\Nuget packages": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
