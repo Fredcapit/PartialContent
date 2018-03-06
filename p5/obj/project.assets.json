@@ -11,7 +11,7 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "NETStandard.Library/2.0.1": {
+      "NETStandard.Library/2.0.0": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0"
@@ -30,7 +30,7 @@
   },
   "libraries": {
     "Microsoft.NETCore.Platforms/1.1.0": {
-      "sha512": "6/XEJUmbZoLOphKdASHDR2EUi14Yy0y/2lXz++FIdTCQW7fRkLYlJmtHGa0eLPl6mpBbTZy6ZDqtNYfsRMFtmA==",
+      "sha512": "kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
       "type": "package",
       "path": "microsoft.netcore.platforms/1.1.0",
       "files": [
@@ -42,10 +42,10 @@
         "runtime.json"
       ]
     },
-    "NETStandard.Library/2.0.1": {
-      "sha512": "oA6nwv9MhEKYvLpjZ0ggSpb1g4CQViDVQjLUcDWg598jtvJbpfeP2reqwI1GLW2TbxC/Ml7xL6BBR1HmKPXlTg==",
+    "NETStandard.Library/2.0.0": {
+      "sha512": "7jnbRU+L08FXKMxqUflxEXtVymWvNOrS8yHgu9s6EM8Anr6T/wIX4nZ08j/u3Asz+tCufp3YVwFSEvFTPYmBPA==",
       "type": "package",
-      "path": "netstandard.library/2.0.1",
+      "path": "netstandard.library/2.0.0",
       "files": [
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -151,7 +151,6 @@
         "build/netstandard2.0/ref/System.Transactions.dll",
         "build/netstandard2.0/ref/System.ValueTuple.dll",
         "build/netstandard2.0/ref/System.Web.dll",
-        "build/netstandard2.0/ref/System.Web.Http.dll",
         "build/netstandard2.0/ref/System.Windows.dll",
         "build/netstandard2.0/ref/System.Xml.Linq.dll",
         "build/netstandard2.0/ref/System.Xml.ReaderWriter.dll",
@@ -167,45 +166,47 @@
         "build/netstandard2.0/ref/netstandard.dll",
         "build/netstandard2.0/ref/netstandard.xml",
         "lib/netstandard1.0/_._",
-        "netstandard.library.2.0.1.nupkg.sha512",
+        "netstandard.library.2.0.0.nupkg.sha512",
         "netstandard.library.nuspec"
       ]
     }
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "NETStandard.Library >= 2.0.1"
+      "NETStandard.Library >= 2.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Фёдор\\.nuget\\packages\\": {},
-    "C:\\Program Files\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
+    "C:\\Users\\shibanovfv\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
+    "restoreSettings": {
+      "hideWarningsAndErrors": true
+    },
     "restore": {
-      "projectUniqueName": "D:\\Coding\\c#\\w1\\p5\\p5.csproj",
+      "projectUniqueName": "D:\\Project\\PartialContent\\p1\\p5\\p5.csproj",
       "projectName": "p5",
-      "projectPath": "D:\\Coding\\c#\\w1\\p5\\p5.csproj",
-      "packagesPath": "C:\\Users\\Фёдор\\.nuget\\packages\\",
-      "outputPath": "D:\\Coding\\c#\\w1\\p5\\obj\\",
+      "projectPath": "D:\\Project\\PartialContent\\p1\\p5\\p5.csproj",
+      "packagesPath": "C:\\Users\\shibanovfv\\.nuget\\packages\\",
+      "outputPath": "D:\\Project\\PartialContent\\p1\\p5\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\Microsoft SDKs\\NuGetPackagesFallback\\",
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Фёдор\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
+        "C:\\Users\\shibanovfv\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"
       ],
       "sources": {
-        "C:\\Program Files\\Microsoft SDKs\\NuGetPackages\\": {},
-        "D:\\Coding\\Nuget packages": {},
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -225,7 +226,7 @@
           "NETStandard.Library": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[2.0.1, )",
+            "version": "[2.0.0, )",
             "autoReferenced": true
           }
         },

@@ -6,9 +6,8 @@ namespace p5.interfaces
     public interface PartialContentProducerInerface
     {
 
-        Task<bool> isAvailable();
-        Task IsRangeHeaderExist();
-        Task CanRangeBeFulfilled();
-        Task ProduceConent();
+        bool isAvailable();
+        bool CanRangeBeFulfilled();
+        void ProduceConent();
     }
 }

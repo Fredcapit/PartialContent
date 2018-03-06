@@ -1,3 +1,4 @@
+using p5.interfaces;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,52 +9,27 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Mime;
-using System.Web.Configuration;
-using System.Web.Http;
+using System.Threading.Tasks;
+using p5.Extensions;
 
 namespace p5
 {
     public class PartialContent : PartialContentProducerInerface
     {
-        public Task CanRangeBeFulfilled()
+        public bool CanRangeBeFulfilled()
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<bool> isAvailable()
+        public bool isAvailable()
         {
+            throw new System.NotImplementedException();
 
         }
 
-        public Task IsRangeHeaderExist(WebRequest req)
-        {
-            RangeHeaderValue rangeHeader = req.Headers.R;
-            if (rangeHeader == null || !rangeHeader.Ranges.Any())
-            {
-                response.StatusCode = HttpStatusCode.OK;
-                response.Content = new PushStreamContent((outputStream, httpContent, transpContext)
-                =>
-                    {
-                        using (outputStream) // Copy the file to output stream straightforward. 
-                using (Stream inputStream = fileInfo.OpenRead())
-                        {
-                            try
-                            {
-                                inputStream.CopyTo(outputStream, ReadStreamBufferSize);
-                            }
-                            catch (Exception error)
-                            {
-                                Debug.WriteLine(error);
-                            }
-                        }
-                    }, GetMimeNameFromExt(fileInfo.Extension));
+        
 
-                response.Content.Headers.ContentLength = totalLength;
-                return response;
-            }
-        }
-
-        public Task ProduceConent()
+        public void ProduceConent()
         {
             throw new System.NotImplementedException();
         }
