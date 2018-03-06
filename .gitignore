@@ -4,5 +4,5 @@
 
 /.vs/p5/v15
 /p5/.vs/p5/v15
-/p5/bin/
-/p5/obj/
+/p5/bin
+/p5/obj
