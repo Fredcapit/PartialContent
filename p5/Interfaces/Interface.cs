@@ -3,11 +3,10 @@ using System.Threading.Tasks;
 
 namespace p5.interfaces
 {
-    public interface PartialContentProducerInerface
+    public interface PartialContentProducerInterface
     {
 
-        bool isAvailable();
-        bool CanRangeBeFulfilled();
-        void ProduceConent();
+
+        void ProduceContent();
     }
 }

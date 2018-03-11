@@ -14,23 +14,14 @@ using p5.Extensions;
 
 namespace p5
 {
-    public class PartialContent : PartialContentProducerInerface
+    public class PartialContent : PartialContentProducerInterface
     {
-        public bool CanRangeBeFulfilled()
+               
+
+        public void ProduceContent()
         {
-            throw new System.NotImplementedException();
-        }
-
-        public bool isAvailable()
-        {
-            throw new System.NotImplementedException();
-
-        }
-
-        
-
-        public void ProduceConent()
-        {
+            HttpWebRequest req=new HttpWebRequest();
+            
             throw new System.NotImplementedException();
         }
     }
