@@ -6,22 +6,18 @@ using System.Linq;
 
 namespace p5.Extensions
 {
-    public static class WebheaderCollectionExtension
+    public static class HttpRequestHeadersExtension
     {
-        public static bool IsRangeHeaderExist(this WebHeaderCollection headerCollection)
+        public static bool IsRangeHeaderExist(this HttpRequestHeaders headerCollection)
         {
-            RangeHeaderValue rangeHeader = new RangeHeaderValue();
-            if (!RangeHeaderValue
-                .TryParse(headerCollection[HttpRequestHeader.Range], out rangeHeader))
-                return false;
+           
+            RangeHeaderValue rangeHeader = headerCollection.Range;
+            
             return (rangeHeader != null && rangeHeader.Ranges.Any());
         }
-        public static bool IsRangeHeaderCorrect (this WebHeaderCollection headerCollection, long fileLen)
+        public static bool IsRangeHeaderCorrect (this HttpRequestHeaders headerCollection, long fileLen)
         {
-            RangeHeaderValue rangeHeader = new RangeHeaderValue();
-            if (!RangeHeaderValue
-                .TryParse(headerCollection[HttpRequestHeader.Range], out rangeHeader))
-                return false;
+            RangeHeaderValue rangeHeader = headerCollection.Range;
             bool unitIsNotbytes=rangeHeader.Unit !="bytes";
             bool multipleRanges = rangeHeader.Ranges.Count>1;
             RangeItemHeaderValue range=rangeHeader.Ranges.First();
