@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Mime;
+using System.Threading;
 using p5.Extensions;
 
 namespace p5
@@ -15,37 +16,31 @@ namespace p5
         private HttpRequestMessage _req;
         private HttpResponseMessage _res;
         private long _fileLen;
-        private string _filename;
-        private string _filenameEx;
-        // We have a read-only dictionary for mapping file extensions and MIME names. 
-        public readonly IReadOnlyDictionary<string, string> MimeNames;
+        private MediaTypeHeaderValue _mediaType;
+        private object locker = new object();
+        private bool DataAvailable = true;
+        private bool WriteAvalable = true;
+        private Queue<byte[]> buffer = new Queue<byte[]>();
+        private int ReadBytesLength = 1024;
 
-        public StreamVideo(HttpRequestMessage req, HttpResponseMessage res, string filename)
+        public StreamVideo(HttpRequestMessage req, HttpResponseMessage res,MediaTypeHeaderValue mediaType)
         {
             _req = req;
             _res = res;
-            var mimeNames = new Dictionary<string, string>();
-
-            mimeNames.Add(".mp3", "audio/mpeg");    // List all supported media types; 
-            mimeNames.Add(".mp4", "video/mp4");
-            mimeNames.Add(".ogg", "application/ogg");
-            mimeNames.Add(".ogv", "video/ogg");
-            mimeNames.Add(".oga", "audio/ogg");
-            mimeNames.Add(".wav", "audio/x-wav");
-            mimeNames.Add(".webm", "video/webm");
-
-            MimeNames = new ReadOnlyDictionary<string, string>(mimeNames);
+            _mediaType = mediaType;
+  
         }
-        public void ProduceContent()
+       
+        public bool IsSatisfaible()
         {
             if (!_req.Headers.IsRangeHeaderExist())
-            { ProduceSimpleResponse(); goto Finish; }
+            { ProduceSimpleResponse(); return false; }
 
             if (!_req.Headers.IsRangeHeaderCorrect(_fileLen))
-            { NotSatisfaibleResponseMessage(); goto Finish; }
+            { NotSatisfaibleResponseMessage(); return false; }
 
-            Finish:
-            int result = 0;
+                return true;
+  
         }
         private void ProduceSimpleResponse()
         {
@@ -56,18 +51,58 @@ namespace p5
             _res.StatusCode = HttpStatusCode.RequestedRangeNotSatisfiable;
             _res.Content = new StreamContent(Stream.Null);  // No content for this status.
             _res.Content.Headers.ContentRange = new ContentRangeHeaderValue(_fileLen);
-            _res.Content.Headers.ContentType = GetMimeNameFromExt(_filenameEx);
+            _res.Content.Headers.ContentType = _mediaType;
 
             
         }
-        private MediaTypeHeaderValue GetMimeNameFromExt(string ext)
+        private void ProduceStream(Stream input, Stream output)
         {
-            string value;
+            while (DataAvailable || WriteAvalable)
+            {
+                lock (locker)
+                {
+                    Read(input);
+                }
+                lock (locker)
+                {
+                    Write(output);
+                }
 
-            if (MimeNames.TryGetValue(ext.ToLowerInvariant(), out value))
-                return new MediaTypeHeaderValue(value);
-            else
-                return new MediaTypeHeaderValue(MediaTypeNames.Application.Octet);
+            }
+        }
+        private void Read(Stream input)
+        {
+
+            byte[] readbuffer = new byte[ReadBytesLength];
+            int bytesread = 0;
+            try
+            {
+                bytesread = input.Read(readbuffer, 0, ReadBytesLength);
+            }
+            finally
+            {
+                DataAvailable = (bytesread > 0);
+            }
+            if (DataAvailable)
+            {
+                byte[] factbuffer = new byte[bytesread];
+                Buffer.BlockCopy(readbuffer, 0, factbuffer, 0, bytesread);
+                buffer.Enqueue(factbuffer);
+            }
+
+        }
+        private void Write(Stream output)
+        {
+            try
+            {
+                byte[] bytesforWriting = buffer.Dequeue();
+                output.Write(bytesforWriting, 0, bytesforWriting.Length);
+
+            }
+            catch
+            {
+                WriteAvalable = false;
+            }
         }
     }
 }
